@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<div style="display: flex; flex-direction: column; align-items: center" >
+{{if .CheckSession}}
+    <p style="color:blue ; text-transform: uppercase">you are already authenticated. Go to your <a href="/dashboard">profile!</a></p>
+{{else}}
+    <div style="display: flex; flex-direction: column; align-items: center" >
+        <h1>LOGIN</h1>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+    </div>
+{{end}}
+</div>
+</body>
+</html>

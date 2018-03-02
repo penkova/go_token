@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div style="display: flex; flex-direction: column; align-items: center" >
+    <h1>LOGIN</h1>
+{{if .LoginError}} 		<p style="color:red ; text-transform: uppercase">Either username or password is not in our record! <a href="/signup">Sign Up?</a></p> {{end}}
+{{if .UserNotDatabase}} <p style="color:blue ; text-transform: uppercase">user with such username and password does not exist! <a href="/signup">Sign Up?</a></p> {{end}}
+
+    <form method="POST" action="/login">
+    {{if .Username}}
+        <p><b>{{.Username}}</b>, you're already logged in! <a href="/logout">Logout!</a></p>
+    {{else}}
+        <label>Username:</label>
+        <input type="text" name="username"><br>
+
+        <label>Password:</label>
+        <input type="password" name="password">
+
+        <input type="submit" name="login" value="Let me in!">
+    {{end}}
+    </form>
+</div>
+</body>
+</html>

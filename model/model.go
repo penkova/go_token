@@ -5,10 +5,10 @@ import (
 )
 
 type User struct {
-	ID        bson.ObjectId `json:"id" 					bson:"_id,omitempty"`
-	Username  string        `json:"username" 			bson:"username"`
-	Password  string        `json:"password,omitempty" 	bson:"password"`
-	Token     string        `json:"token,omitempty" 	bson:"-"`
+	ID       bson.ObjectId `json:"id" 					bson:"_id,omitempty"`
+	Username string        `json:"username" 			bson:"username"`
+	Password string        `json:"password,omitempty" 	bson:"password"`
+	Token    string        `json:"token,omitempty" 	bson:"-"`
 }
 
 type TokenJwt struct {

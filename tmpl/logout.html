@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My profile</title>
+</head>
+<body>
+{{if .UserNotDatabase}} <p style="color:blue ; text-transform: uppercase">user with such username and password does not exist! Sign Up?</p> {{else}}
+
+<div style="display: flex; flex-direction: column; align-items: center" >
+{{if .Logout}}
+
+{{else}}
+    <p style="color:#2F4F4F; text-transform: uppercase">User:{{.username}}</p>
+    <form method="post" action="/logout">
+        <button type="submit">Logout</button>
+    </form>
+{{end}}
+</div>
+{{end}}
+</body>
+</html>
