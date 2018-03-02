@@ -6,7 +6,11 @@ import (
 
 type User struct {
 	ID        bson.ObjectId `json:"id" 					bson:"_id,omitempty"`
-	Email     string        `json:"email" 				bson:"email"`
+	Username  string        `json:"username" 			bson:"username"`
 	Password  string        `json:"password,omitempty" 	bson:"password"`
 	Token     string        `json:"token,omitempty" 	bson:"-"`
+}
+
+type TokenJwt struct {
+	Token string `json:"token"`
 }

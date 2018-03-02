@@ -3,25 +3,28 @@ package main
 import (
 	"net/http"
 	"fmt"
-
-	"github.com/gorilla/mux"
+	"github.com/gorilla/context"
+	_ "github.com/dgrijalva/jwt-go"
 	"github.com/user/go_token/handler"
 )
+
 const (
-	port = ":8000"
+	port = ":8080"
 )
 
-func main(){
-	r := mux.NewRouter()
+func main() {
+	fmt.Println("Server starting, point your browser to localhost:8080 to start")
+	// Here we are instantiating the gorilla/mux router
+	//r := mux.NewRouter()
 
-	fmt.Println("Server starting, localhost:8000 to start")
-	r.HandleFunc("/", handler.StartPage)
-	r.HandleFunc("/login", handler.Login).Methods("POST")
-	r.HandleFunc("/signup", handler.SignUp).Methods("GET")
+	//r.HandleFunc("/", models.StartPage).Methods("POST")
+	http.HandleFunc("/", handler.StartPage)
+	http.HandleFunc("/signup", handler.SignUp)
+	http.HandleFunc("/login", handler.Login)
+	http.HandleFunc("/logout", handler.Logout)
 
-	http.ListenAndServe(port, r)
-
-
+	// Our application will run on port 3030. Here we declare the port and pass in our router.
+	http.ListenAndServe(port, context.ClearHandler(http.DefaultServeMux))
 
 
 	//r := mux.NewRouter()
@@ -32,7 +35,7 @@ func main(){
 	//r.HandleFunc("/protected", model.ProtectedEndpoint).Methods("GET")
 	//
 	//http.ListenAndServe(port, r)
-
+	//
 	//hmacSampleSecret := []byte("my_secret")
 	//// Create a new token object, specifying signing method and the claims
 	//// you would like it to contain.

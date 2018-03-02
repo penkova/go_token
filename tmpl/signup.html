@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIGN IN</title>
+</head>
+<body>
+<div style="display: flex; flex-direction: column; align-items: center" >
+    <h1>SIGN IN</h1>
+{{if .SignUpError}}
+    <p style="color:red ; text-transform: uppercase">No username or password! Fill in required fields </p>
+{{end}}
+{{if .ErrorCheckUser}}
+    <p style="color:red ; text-decoration: underline; text-transform: uppercase">Username and password can only contain letters AND numbers</p>
+{{end}}
+    <form method="POST" action="/signup">
+
+    {{if .SignUpSuccessful}}
+        <p>Registration completed. Go to <a href="/login">Login!</a></p>
+    {{else}}
+
+        <label for="username">Username:</label>
+        <input type="text"  id="username" name="username" value="">
+
+        <label for="pass1">Password:</label>
+        <input type="password" id="pass1" name="password" value="">
+        <input type="submit" name="signup" value="Sign In!">
+    {{end}}
+    </form>
+</div>
+</body>
+</html>
